@@ -4,12 +4,14 @@
 \alias{fetch}
 \title{Fetch the next problem for a particular language track}
 \usage{
-fetch(trackID = "r", skip = FALSE)
+fetch(trackID = "r", skip = FALSE, force = FALSE)
 }
 \arguments{
 \item{trackID}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
 
 \item{skip}{logical, indicated whether existing problem files should be overwritten}
+
+\item{force}{logical, indicating whether existing problem files should be overwritten}
 }
 \value{
 Prints confirmation message upon success

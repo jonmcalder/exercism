@@ -91,11 +91,12 @@ fetch_problem <- function(trackID = "r", slug, force = FALSE) {
 #'
 #' @param trackID a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc
 #' @param skip logical, indicated whether existing problem files should be overwritten
+#' @param force logical, indicating whether existing problem files should be overwritten
 #'
 #' @return Prints confirmation message upon success
 #'
 #' @export
-fetch <- function(trackID = "r", skip = FALSE) {
+fetch <- function(trackID = "r", skip = FALSE, force = FALSE) {
 
   if (skip) {
     skip_problem(trackID = trackID, slug = check_next_problem(trackID = trackID))
@@ -115,6 +116,8 @@ fetch <- function(trackID = "r", skip = FALSE) {
 
   if (!dir.exists(problem_dir)) {
     fetch_problem(trackID = x$track_id, slug = x$slug)
+  } else if (force) {
+    fetch_problem(trackID = x$track_id, slug = x$slug, force = TRUE)
   } else {
     warning(sprintf("Not submitted: %s (%s)", x$name, x$language),
             call. = FALSE)
