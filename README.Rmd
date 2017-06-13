@@ -1,0 +1,46 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# exercism
+
+[![Project Status: WIP ? Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![Build Status](https://travis-ci.org/jonmcalder/exercism.svg?branch=master)](https://travis-ci.org/jonmcalder/exercism)
+[![codecov](https://codecov.io/gh/jonmcalder/exercism/branch/master/graph/badge.svg)](https://codecov.io/gh/jonmcalder/exercism)
+
+
+This package is designed to make it easy for R users to work through the R track on [exercism.io](http://exercism.io).
+
+It is not a complete replacement for the [Exercism CLI](http://exercism.io/clients/cli), but instead provides easy access to the most commonly used CLI functionality:
+
+- fetch problems
+- skip problems
+- submit solutions
+- check status/progress
+- fetch previous submissions
+
+## Install `exercism`
+
+```
+devtools::install_github("jonmcalder/exercism")
+```
+
+## RStudio gadgets
+
+The above mentioned package functionality is also accessible via an RStudio gadget.
+
+## Contribute
+
+If you encounter any problems while using this package please raise them on the [issues page](https://github.com/jonmcalder/exercism/issues). You can also use this page to offer any suggestions for improvement.
