@@ -1,5 +1,7 @@
 context("API methods")
 
+set_api_key("test123")
+
 test_that("check_next_problem", {
   expect_message(check_next_problem("python"))
   expect_error(check_next_problem("unknown"))
