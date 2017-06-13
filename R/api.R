@@ -63,7 +63,7 @@ fetch_problem <- function(trackID = "r", slug, force = FALSE) {
   files <- x$files
 
   if (!dir.exists(problem_dir)) {
-    dir.create(problem_dir, recursive = TRUE, mode = )
+    dir.create(problem_dir, recursive = TRUE)
   } else if (force) {
     warning("Problem folder already exists, files will be overwritten.", call. = FALSE)
   } else {
@@ -75,7 +75,7 @@ fetch_problem <- function(trackID = "r", slug, force = FALSE) {
       problem_dir,
       names(files)[i]
     )
-    file.create(problem_file, overwrite = TRUE)
+    dir.create(dirname(problem_file))
     write(
       files[[i]],
       file = problem_file
