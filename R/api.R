@@ -220,7 +220,9 @@ create_status <- function(x) {
 
 #' Print status object
 #'
+#' @param status a status object (returned via \code{\link{status}}).
+#'
 #' @export
-print.status <- function(x, ...) {
-  str(x)
+print.status <- function(status, ...) {
+  str(status)
 }

@@ -4,7 +4,10 @@
 \alias{print.status}
 \title{Print status object}
 \usage{
-\method{print}{status}(x, ...)
+\method{print}{status}(status, ...)
+}
+\arguments{
+\item{status}{a status object (returned via \code{\link{status}}).}
 }
 \description{
 Print status object
