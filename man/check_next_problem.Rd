@@ -4,10 +4,10 @@
 \alias{check_next_problem}
 \title{Check the next problem for a particular language track}
 \usage{
-check_next_problem(trackID = "r")
+check_next_problem(track_id = "r")
 }
 \arguments{
-\item{trackID}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
+\item{track_id}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
 }
 \value{
 Prints out current/next problem, silently returns problem slug

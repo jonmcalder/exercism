@@ -1,11 +1,11 @@
 # Set user agent
-ua <- httr::user_agent('http://github.com/jonmcalder/exercism')
+ua <- httr::user_agent("http://github.com/jonmcalder/exercism")
 
 # Set root URL for exercism API
-root <- 'http://exercism.io'
+root <- "http://exercism.io"
 
 # Set root URL for exercism x-API
-root_x <- 'http://x.exercism.io'
+root_x <- "http://x.exercism.io"
 
 
 
@@ -35,7 +35,8 @@ set_api_key <- function(key) {
     # Check if API key has been set before
     Renviron_lines <- readLines(Renviron_file)
     if (any(grepl("^EXERCISM_KEY=", Renviron_lines))) {
-      Renviron_lines[grepl("^EXERCISM_KEY=", Renviron_lines)] = paste0("EXERCISM_KEY=", key)
+      Renviron_lines[grepl("^EXERCISM_KEY=", Renviron_lines)] <-
+        paste0("EXERCISM_KEY=", key)
       writeLines(Renviron_lines, Renviron_file)
       return(message(sprintf("Updated EXERCISM_KEY: %s", key)))
     }
@@ -72,15 +73,14 @@ set_exercism_path <- function(path = NULL) {
 
   if (is.null(path)) {
     if (.Platform$OS.type == "windows") {
-      # to-do: update default path for Windows to be C:\Users\<username>\exercism
-      path = normalizePath(
+      path <- normalizePath(
         file.path(Sys.getenv("HOMEDRIVE"),
                   Sys.getenv("HOMEPATH"),
                   "exercism"),
         winslash = "/"
       )
     } else {
-      path = path.expand("~/exercism")
+      path <- path.expand("~/exercism")
     }
   }
 
@@ -97,7 +97,8 @@ set_exercism_path <- function(path = NULL) {
     # Check if Exercism path has been set before
     Renviron_lines <- readLines(Renviron_file)
     if (any(grepl("^EXERCISM_PATH=", Renviron_lines))) {
-      Renviron_lines[grepl("^EXERCISM_PATH=", Renviron_lines)] = paste0("EXERCISM_PATH=", path)
+      Renviron_lines[grepl("^EXERCISM_PATH=", Renviron_lines)] <-
+        paste0("EXERCISM_PATH=", path)
       writeLines(Renviron_lines, Renviron_file)
       return(message(sprintf("Updated EXERCISM_PATH: %s", path)))
     }

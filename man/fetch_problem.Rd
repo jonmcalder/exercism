@@ -4,10 +4,10 @@
 \alias{fetch_problem}
 \title{Fetch a problem for a particular language track}
 \usage{
-fetch_problem(trackID = "r", slug, force = FALSE)
+fetch_problem(track_id = "r", slug, force = FALSE)
 }
 \arguments{
-\item{trackID}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
+\item{track_id}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
 
 \item{slug}{a normalized, url-safe identifier for a problem e.g. "hello-world"}
 

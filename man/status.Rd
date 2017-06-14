@@ -4,10 +4,10 @@
 \alias{status}
 \title{Get status from exercism.io}
 \usage{
-status(trackID = "r")
+status(track_id = "r")
 }
 \arguments{
-\item{trackID}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
+\item{track_id}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
 }
 \value{
 Current status from exercism.io

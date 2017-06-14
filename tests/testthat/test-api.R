@@ -9,14 +9,33 @@ test_that("check_next_problem", {
 })
 
 test_that("fetch_problem", {
-  expect_error(fetch_problem(trackID = "unknown", slug = "hello-world"))
-  expect_message(fetch_problem(trackID = "haskell", slug = "hello-world", force = TRUE))
-  expect_warning(fetch_problem(trackID = "haskell", slug = "hello-world", force = TRUE))
-  expect_error(fetch_problem(trackID = "haskell", slug = "hello-world"))
+
+  expect_error(fetch_problem(
+    rackID = "unknown",
+    slug = "hello-world"
+  ))
+
+  expect_message(fetch_problem(
+    track_id = "haskell",
+    slug = "hello-world",
+    force = TRUE
+  ))
+
+  expect_warning(fetch_problem(
+    track_id = "haskell",
+    slug = "hello-world",
+    force = TRUE
+  ))
+
+  expect_error(fetch_problem(
+    track_id = "haskell",
+    slug = "hello-world"
+  ))
+
 })
 
 test_that("fetch", {
-  expect_error(fetch(trackID = "unknown"))
-  expect_message(fetch(trackID = "haskell", force = TRUE))
-  expect_warning(fetch(trackID = "haskell", force = TRUE))
+  expect_error(fetch(track_id = "unknown"))
+  expect_message(fetch(track_id = "haskell", force = TRUE))
+  expect_warning(fetch(track_id = "haskell", force = TRUE))
 })

@@ -13,7 +13,14 @@ test_that("set and get path methods", {
 })
 
 test_that("check API response method", {
-  expect_silent(check_API_response(httr::GET('http://httpbin.org/ip')))
-  expect_warning(check_API_response(httr::GET('http://httpbin.org/xml')))
-  expect_error(check_API_response(httr::GET('http://httpbin.org/wrong')))
+  expect_silent(check_API_response(httr::GET("http://httpbin.org/ip")))
+  expect_warning(check_API_response(httr::GET("http://httpbin.org/xml")))
+  expect_error(check_API_response(httr::GET("http://httpbin.org/wrong")))
 })
+
+if (requireNamespace("lintr", quietly = TRUE)) {
+  context("Lints")
+  test_that("Package Style", {
+    lintr::expect_lint_free()
+  })
+}

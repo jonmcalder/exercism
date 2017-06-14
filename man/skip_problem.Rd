@@ -4,10 +4,10 @@
 \alias{skip_problem}
 \title{Skip a problem for a language track}
 \usage{
-skip_problem(trackID = "r", slug)
+skip_problem(track_id = "r", slug)
 }
 \arguments{
-\item{trackID}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
+\item{track_id}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
 
 \item{slug}{a normalized, url-safe identifier for a problem e.g. "hello-world"}
 }
