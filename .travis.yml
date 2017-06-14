@@ -9,3 +9,5 @@ r_github_packages:
   - jimhester/lintr
 after_success:
   - Rscript -e 'library(covr); codecov()'
+notifications:
+  slack: rcollaborators:vsKVUWorGw2xKn9H0yhPIC36
