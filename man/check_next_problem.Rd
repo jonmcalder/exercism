@@ -7,7 +7,8 @@
 check_next_problem(track_id = "r")
 }
 \arguments{
-\item{track_id}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
+\item{track_id}{a normalized, url-safe identifier for a language track.
+e.g. r, python, javascript etc}
 }
 \value{
 Prints out current/next problem, silently returns problem slug

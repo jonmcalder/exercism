@@ -11,7 +11,7 @@ test_that("check_next_problem", {
 test_that("fetch_problem", {
 
   expect_error(fetch_problem(
-    rackID = "unknown",
+    track_id = "unknown",
     slug = "hello-world"
   ))
 

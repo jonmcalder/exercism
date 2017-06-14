@@ -4,7 +4,8 @@
 #' Returns the next problem for a language track i.e. the next problem to be
 #' submitted, or possibly the next problem to be fetched
 #'
-#' @param track_id a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
 #'
 #' @return Prints out current/next problem, silently returns problem slug
 #'
@@ -21,7 +22,7 @@ check_next_problem <- function(track_id = "r") {
 
   resp <- httr::GET(url, ua)
 
-  check_API_response(resp)
+  check_api_response(resp)
 
   x <- httr::content(resp)$problems[[1]]
 
@@ -43,9 +44,12 @@ check_next_problem <- function(track_id = "r") {
 #' Fetches the files for a problem via the Exercism API and writes them into
 #' a new problem folder in the Exercism directory
 #'
-#' @param track_id a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc
-#' @param slug a normalized, url-safe identifier for a problem e.g. "hello-world"
-#' @param force logical, indicating whether existing problem files should be overwritten
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
+#' @param slug a normalized, url-safe identifier for a problem
+#'  e.g. "hello-world"
+#' @param force logical, indicating whether existing problem files should be
+#'  overwritten
 #'
 #' @return Prints confirmation message upon success
 #'
@@ -59,7 +63,7 @@ fetch_problem <- function(track_id = "r", slug, force = FALSE) {
 
   resp <- httr::GET(url, ua)
 
-  check_API_response(resp)
+  check_api_response(resp)
 
   x <- httr::content(resp)$problem
 
@@ -96,9 +100,12 @@ fetch_problem <- function(track_id = "r", slug, force = FALSE) {
 #' Checks for the next problem via the Exercism API, and writes the files into
 #' the folder in the Exercism directory
 #'
-#' @param track_id a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc
-#' @param skip logical, indicated whether existing problem files should be overwritten
-#' @param force logical, indicating whether existing problem files should be overwritten
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
+#' @param skip logical, indicating whether to skip the current (unsubmitted)
+#'  problem and fetch the next problem
+#' @param force logical, indicating whether existing problem files should be
+#'  overwritten
 #'
 #' @return Prints confirmation message upon success
 #'
@@ -120,7 +127,7 @@ fetch <- function(track_id = "r", skip = FALSE, force = FALSE) {
 
   resp <- httr::GET(url, ua)
 
-  check_API_response(resp)
+  check_api_response(resp)
 
   x <- httr::content(resp)$problems[[1]]
 
@@ -141,8 +148,10 @@ fetch <- function(track_id = "r", skip = FALSE, force = FALSE) {
 #'
 #' Marks a problem as 'skipped' via the Exercism API
 #'
-#' @param track_id a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc
-#' @param slug a normalized, url-safe identifier for a problem e.g. "hello-world"
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
+#' @param slug a normalized, url-safe identifier for a problem
+#'  e.g. "hello-world"
 #'
 #' @return Prints confirmation message upon success
 #'
@@ -155,7 +164,7 @@ skip_problem <- function(track_id = "r", slug) {
 
   resp <- httr::POST(url, ua)
 
-  check_API_response(resp)
+  check_api_response(resp)
 
   message(sprintf(sprintf("%s skipped for %s track", slug, track_id)))
 
@@ -165,7 +174,8 @@ skip_problem <- function(track_id = "r", slug) {
 #'
 #' Fetches current status from exercism.io
 #'
-#' @param track_id a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
 #'
 #' @return Current status from exercism.io
 #'
@@ -178,7 +188,7 @@ status <- function(track_id = "r") {
 
   resp <- httr::GET(url, ua)
 
-  check_API_response(resp)
+  check_api_response(resp)
 
   x <- httr::content(resp)
 

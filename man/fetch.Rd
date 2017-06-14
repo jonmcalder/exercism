@@ -7,11 +7,14 @@
 fetch(track_id = "r", skip = FALSE, force = FALSE)
 }
 \arguments{
-\item{track_id}{a normalized, url-safe identifier for a language track. e.g. r, python, javascript etc}
+\item{track_id}{a normalized, url-safe identifier for a language track.
+e.g. r, python, javascript etc}
 
-\item{skip}{logical, indicated whether existing problem files should be overwritten}
+\item{skip}{logical, indicating whether to skip the current (unsubmitted)
+problem and fetch the next problem}
 
-\item{force}{logical, indicating whether existing problem files should be overwritten}
+\item{force}{logical, indicating whether existing problem files should be
+overwritten}
 }
 \value{
 Prints confirmation message upon success

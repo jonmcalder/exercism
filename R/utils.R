@@ -30,22 +30,22 @@ set_api_key <- function(key) {
     path <- normalizePath("~/")
   }
 
-  Renviron_file <- file.path(path, ".Renviron")
-  if (file.exists(Renviron_file)) {
+  r_env_file <- file.path(path, ".Renviron")
+  if (file.exists(r_env_file)) {
     # Check if API key has been set before
-    Renviron_lines <- readLines(Renviron_file)
-    if (any(grepl("^EXERCISM_KEY=", Renviron_lines))) {
-      Renviron_lines[grepl("^EXERCISM_KEY=", Renviron_lines)] <-
+    r_env_lines <- readLines(r_env_file)
+    if (any(grepl("^EXERCISM_KEY=", r_env_lines))) {
+      r_env_lines[grepl("^EXERCISM_KEY=", r_env_lines)] <-
         paste0("EXERCISM_KEY=", key)
-      writeLines(Renviron_lines, Renviron_file)
+      writeLines(r_env_lines, r_env_file)
       return(message(sprintf("Updated EXERCISM_KEY: %s", key)))
     }
   } else {
     # Create .Renviron if it doesn't already exist
-    file.create(Renviron_file)
+    file.create(r_env_file)
   }
 
-  write(paste0("EXERCISM_KEY=", key), Renviron_file, append = TRUE)
+  write(paste0("EXERCISM_KEY=", key), r_env_file, append = TRUE)
   message(sprintf("Created EXERCISM_KEY: %s", key))
 }
 
@@ -92,22 +92,22 @@ set_exercism_path <- function(path = NULL) {
     home_path <- normalizePath("~/")
   }
 
-  Renviron_file <- file.path(home_path, ".Renviron")
-  if (file.exists(Renviron_file)) {
+  r_env_file <- file.path(home_path, ".Renviron")
+  if (file.exists(r_env_file)) {
     # Check if Exercism path has been set before
-    Renviron_lines <- readLines(Renviron_file)
-    if (any(grepl("^EXERCISM_PATH=", Renviron_lines))) {
-      Renviron_lines[grepl("^EXERCISM_PATH=", Renviron_lines)] <-
+    r_env_lines <- readLines(r_env_file)
+    if (any(grepl("^EXERCISM_PATH=", r_env_lines))) {
+      r_env_lines[grepl("^EXERCISM_PATH=", r_env_lines)] <-
         paste0("EXERCISM_PATH=", path)
-      writeLines(Renviron_lines, Renviron_file)
+      writeLines(r_env_lines, r_env_file)
       return(message(sprintf("Updated EXERCISM_PATH: %s", path)))
     }
   } else {
     # Create .Renviron if it doesn't already exist
-    file.create(Renviron_file)
+    file.create(r_env_file)
   }
 
-  write(paste0("EXERCISM_PATH=", path), Renviron_file, append = TRUE)
+  write(paste0("EXERCISM_PATH=", path), r_env_file, append = TRUE)
   message(sprintf("Created EXERCISM_PATH: %s", path))
 }
 
@@ -129,7 +129,7 @@ get_exercism_path <- function() {
 #' @return Doesn't return a value, simply throws a warning or error if there
 #' is something wrong with the response.
 #'
-check_API_response <- function(response) {
+check_api_response <- function(response) {
 
   # Check response code
   if (!(httr::status_code(response) %in% 200:230)) {
