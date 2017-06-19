@@ -1,0 +1,4 @@
+Name: Exercism Tools
+Description: Fetch problems and submit solutions for exercism.io
+Binding: exercism_addin
+Interactive: true

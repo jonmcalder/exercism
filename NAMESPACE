@@ -2,9 +2,10 @@
 
 S3method(print,status)
 export(check_next_problem)
-export(fetch)
+export(exercism_addin)
+export(fetch_next)
 export(fetch_problem)
 export(set_api_key)
 export(set_exercism_path)
 export(skip_problem)
-export(status)
+export(track_status)

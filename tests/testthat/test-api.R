@@ -34,8 +34,8 @@ test_that("fetch_problem", {
 
 })
 
-test_that("fetch", {
-  expect_error(fetch(track_id = "unknown"))
-  expect_message(fetch(track_id = "haskell", force = TRUE))
-  expect_warning(fetch(track_id = "haskell", force = TRUE))
+test_that("fetch_next", {
+  expect_error(fetch_next(track_id = "unknown"))
+  expect_message(fetch_next(track_id = "haskell", force = TRUE))
+  expect_warning(fetch_next(track_id = "haskell", force = TRUE))
 })

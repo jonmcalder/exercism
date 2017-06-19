@@ -110,7 +110,7 @@ fetch_problem <- function(track_id = "r", slug, force = FALSE) {
 #' @return Prints confirmation message upon success
 #'
 #' @export
-fetch <- function(track_id = "r", skip = FALSE, force = FALSE) {
+fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
 
   if (skip) {
     skip_problem(track_id = track_id,
@@ -170,17 +170,17 @@ skip_problem <- function(track_id = "r", slug) {
 
 }
 
-#' Get status from exercism.io
+#' Get track status from exercism.io
 #'
-#' Fetches current status from exercism.io
+#' Fetches current track status from exercism.io
 #'
 #' @param track_id a normalized, url-safe identifier for a language track.
 #'  e.g. r, python, javascript etc
 #'
-#' @return Current status from exercism.io
+#' @return Current track status from exercism.io
 #'
 #' @export
-status <- function(track_id = "r") {
+track_status <- function(track_id = "r") {
 
   path <- sprintf("api/v1/tracks/%s/status", track_id)
 
@@ -220,9 +220,10 @@ create_status <- function(x) {
 
 #' Print status object
 #'
-#' @param status a status object (returned via \code{\link{status}}).
+#' @param x a status object (returned via \code{\link{track_status}}).
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @export
-print.status <- function(status, ...) {
-  str(status)
+print.status <- function(x, ...) {
+  str(x)
 }
