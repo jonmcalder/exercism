@@ -8,11 +8,11 @@ This package is designed to make it easy for R users to work through the R track
 
 It is not a complete replacement for the [Exercism CLI](http://exercism.io/clients/cli), but instead provides easy access to the most commonly used CLI functionality:
 
--   fetch problems
--   skip problems
--   submit solutions (not implemented yet)
--   check status/progress (not implemented yet)
--   fetch previous submissions (not implemented yet)
+- [x] fetch problems
+- [x] skip problems
+- [ ] submit solutions
+- [ ] check status/progress
+- [ ] fetch previous submissions
 
 Install `exercism`
 ------------------
