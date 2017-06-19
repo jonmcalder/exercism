@@ -7,7 +7,7 @@ Maintainer: Jon Calder <jonmcalder@gmail.com>
 Description: Exercism provides practice problems in over 30 programming 
     languages, and a place where you can get feedback on your solutions. This 
     package makes it easy to fetch problems and submit solutions, so that you 
-    can iterate on the exercises without needing to leave R.
+    can iterate on the exercises without needing to leave your R environment.
 License: MIT + file LICENSE
 URL: http://github.com/jonmcalder/exercism
 BugReports: http://github.com/jonmcalder/exercism/issues
