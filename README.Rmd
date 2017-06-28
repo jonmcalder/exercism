@@ -40,6 +40,12 @@ library(exercism)
 
 ## Setup
 
+There are two essential steps which must be completed before you can make use of 
+this R package:
+
+- set your API key
+- set your exercism path
+
 #### Set your API key
 
 Go to [exercism.io -> account -> API key](http://exercism.io/account/key)
@@ -49,13 +55,26 @@ Go to [exercism.io -> account -> API key](http://exercism.io/account/key)
 Copy your API key (highlighted above in orange), and then run:
 
 ```
-set_api_key("<your API key>")
+set_api_key("<your_API_key>")
+# e.g.
+# set_api_key("1a2b3c4d5e6f7g8h1a2b3c4d5e6f7g8h")
 ```
 
 #### Set exercism path
 ```
 set_exercism_path("<path_to_your_exercism_directory>")
+# e.g. 
+# set_exercism_path("C:/Users/Jon/exercism") # Windows example
+# set_exercism_path("~/exercism")            # Mac & Linux example
+# set_exercism_path()                        # Use default
 ```
+Note that the `exercism_path` referred to here should be the root directory for 
+exercism (i.e. not the `R` sub-directory).
+
+By default the exercism command-line client (CLI) fetches exercises to 
+`~/exercism`. If you have previously used the CLI and have not changed the 
+default directory, then just run `set_exercism_path()` (i.e. with no 
+path argument) and this will use the default exercism directory.
 
 Once you've set your API key and exercism path these will be remembered for future R sessions.
 
