@@ -1,7 +1,13 @@
 context("API methods")
 
+dir.create("~/temp")
+
+on.exit(
+  unlink("~/temp", recursive = TRUE, force = TRUE)
+)
+
+set_exercism_path("~/temp")
 set_api_key("test123")
-set_exercism_path()
 
 test_that("check_next_problem", {
   expect_message(check_next_problem("python"))
@@ -30,6 +36,17 @@ test_that("fetch_problem", {
   expect_error(fetch_problem(
     track_id = "haskell",
     slug = "hello-world"
+  ))
+
+  expect_message(fetch_problem(
+    track_id = "haskell",
+    slug = "anagram"
+  ))
+
+  expect_warning(fetch_problem(
+    track_id = "haskell",
+    slug = "anagram",
+    force = TRUE
   ))
 
 })
