@@ -84,7 +84,7 @@ fetch_problem <- function(track_id = "r", slug, force = FALSE) {
       problem_dir,
       names(files)[i]
     )
-    dir.create(dirname(problem_file))
+    dir.create(dirname(problem_file), showWarnings = FALSE)
     write(
       files[[i]],
       file = problem_file
