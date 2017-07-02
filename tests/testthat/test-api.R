@@ -1,13 +1,17 @@
 context("API methods")
 
-dir.create("~/temp")
+exercism_path <- "~/temp"
+exercism_key <- "test123"
 
-on.exit(
-  unlink("~/temp", recursive = TRUE, force = TRUE)
-)
+dir.create(exercism_path)
+Sys.setenv(EXERCISM_KEY = exercism_key)
+Sys.setenv(EXERCISM_PATH = path.expand(exercism_path))
 
-set_exercism_path("~/temp")
-set_api_key("test123")
+on.exit({
+  unlink(exercism_path, recursive = TRUE, force = TRUE)
+  Sys.unsetenv("EXERCISM_KEY")
+  Sys.unsetenv("EXERCISM_PATH")
+})
 
 test_that("check_next_problem", {
   expect_message(check_next_problem("python"))
