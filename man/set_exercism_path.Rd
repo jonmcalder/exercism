@@ -4,10 +4,13 @@
 \alias{set_exercism_path}
 \title{Set path for exercism}
 \usage{
-set_exercism_path(path = NULL)
+set_exercism_path(path = NULL, force = FALSE)
 }
 \arguments{
 \item{path}{path to exercism folder}
+
+\item{force}{logical, indicating whether to allow overwriting of an existing
+EXERCISM_PATH environment variable}
 }
 \value{
 Silently returns the result of the set operation, which will either

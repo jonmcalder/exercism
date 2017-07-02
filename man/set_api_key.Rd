@@ -4,10 +4,13 @@
 \alias{set_api_key}
 \title{Set API key for exercism.io}
 \usage{
-set_api_key(key)
+set_api_key(key, force = FALSE)
 }
 \arguments{
 \item{key}{API key for exercism.io}
+
+\item{force}{logical, indicating whether to allow overwriting of an existing
+EXERCISM_KEY environment variable}
 }
 \value{
 Silently returns the result of the set operation, which will either
