@@ -20,8 +20,8 @@ check_next_problem <- function(track_id = "r") {
     query = list(key = get_api_key())
   )
 
-  resp <- httr::GET(url, ua)
 
+  resp <- httr::GET(url, config = user_agent)
   check_api_response(resp)
 
   x <- httr::content(resp)$problems[[1]]
@@ -61,7 +61,7 @@ fetch_problem <- function(track_id = "r", slug, force = FALSE) {
 
   url <- httr::modify_url(root_x, path = path)
 
-  resp <- httr::GET(url, ua)
+  resp <- httr::GET(url, user_agent)
 
   check_api_response(resp)
 
@@ -125,7 +125,7 @@ fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
     query = list(key = get_api_key())
   )
 
-  resp <- httr::GET(url, ua)
+  resp <- httr::GET(url, user_agent)
 
   check_api_response(resp)
 
@@ -162,7 +162,7 @@ skip_problem <- function(track_id = "r", slug) {
 
   url <- httr::modify_url(root, path = path, query = list(key = get_api_key()))
 
-  resp <- httr::POST(url, ua)
+  resp <- httr::POST(url, user_agent)
 
   check_api_response(resp)
 
@@ -186,7 +186,7 @@ track_status <- function(track_id = "r") {
 
   url <- httr::modify_url(root, path = path, query = list(key = get_api_key()))
 
-  resp <- httr::GET(url, ua)
+  resp <- httr::GET(url, user_agent)
 
   check_api_response(resp)
 
