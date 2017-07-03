@@ -24,6 +24,10 @@ root_x <- "http://x.exercism.io"
 #' @export
 set_api_key <- function(key, force = FALSE) {
 
+  if (any(is.null(key), !is.character(key))) {
+    stop("Invalid key. Please provide a valid API key in string form.")
+  }
+
   if (nchar(key) != 32) {
     warning("The provided key may be invalid. Please check it carefully.")
   }

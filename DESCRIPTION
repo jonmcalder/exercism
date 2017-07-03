@@ -1,7 +1,7 @@
 Package: exercism
 Type: Package
 Title: Interface to the Exercism API
-Version: 0.1.0.9000
+Version: 0.1.1
 Author: person("Jon", "Calder", email = "jonmcalder@gmail.com", role = c("aut", "cre"))
 Maintainer: Jon Calder <jonmcalder@gmail.com>
 Description: Exercism provides practice problems in over 30 programming 
