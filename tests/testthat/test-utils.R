@@ -15,9 +15,9 @@ on.exit({
 api_test_key <- "thisisanapitestkeythatislength32"
 
 test_that("set and get API key methods", {
-  expect_error(set_api_key(api_test_key))
   expect_warning(set_api_key("invalidapitestkey", force = TRUE))
   expect_message(set_api_key(api_test_key, force = TRUE), "EXERCISM_KEY")
+  expect_error(set_api_key(api_test_key))
   expect_equal(get_api_key(), api_test_key)
 })
 
