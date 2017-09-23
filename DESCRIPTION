@@ -17,7 +17,10 @@ Imports:
     httr,
     jsonlite,
     shiny,
-    miniUI
+    miniUI,
+    R.utils,
+    assertthat,
+    rstudioapi
 Suggests:
     testthat,
     covr,

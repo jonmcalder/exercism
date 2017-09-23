@@ -225,7 +225,7 @@ create_status <- function(x) {
 #'
 #' @export
 print.status <- function(x, ...) {
-  str(x)
+  utils::str(x)
 }
 
 
@@ -239,33 +239,33 @@ print.status <- function(x, ...) {
 #'   on exercism.io on completion
 #'
 #' @return Response from exercism.io
-#' 
-#' @examples 
+#'
+#' @examples
 #' submit("~/exercism/r/hello-world/hello-world.R")
 #' @export
 submit <- function(path, comment = NULL, browse = FALSE) {
-  
+
   data <- iteration(path, comment = comment)
-  
+
   path <- "/api/v1/user/assignments"
-  
+
   url <- httr::modify_url(root, path = path)
-  
-  resp <- httr::POST(url = url, ua,
+
+  resp <- httr::POST(url = url, user_agent,
                      body = data,
                      encode = 'json')
-  return(resp)
+
   # should check response here and return a success/failure message
   check_api_response(resp)
-  
+
   message(sprintf("%s for %s track has been sucessfully submitted", data$problem, data$language))
-  
+
   if (browse) {
     browseURL(httr::content(resp)$url)
   }
 
   invisible(resp)
-  
+
 }
 
 
@@ -278,9 +278,9 @@ submit <- function(path, comment = NULL, browse = FALSE) {
 #' @examples
 #' browse_solution("r", "hamming")
 browse_solution <- function(track_id = "r", slug) {
-  
+
   url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
-  
+
   browseURL(url)
 }
 
@@ -294,8 +294,8 @@ browse_solution <- function(track_id = "r", slug) {
 #' @examples
 #' browse_exercise("r", "leap")
 browse_exercise <- function(track_id = "r", slug) {
-  
+
   url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
-  
+
   browseURL(url)
 }
