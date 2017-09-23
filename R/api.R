@@ -166,7 +166,7 @@ skip_problem <- function(slug, track_id = "r") {
 
   check_api_response(resp)
 
-  message(sprintf(sprintf("%s skipped for %s track", slug, track_id)))
+  message(sprintf("%s skipped for %s track", slug, track_id))
 
 }
 
@@ -226,4 +226,76 @@ create_status <- function(x) {
 #' @export
 print.status <- function(x, ...) {
   str(x)
+}
+
+
+#' Submit a solution to exercism.io
+#'
+#' Submits the specified solution to exercism.io
+#'
+#' @param path full path to the file containing the solution
+#' @param comment comment to include with the submission
+#' @param browse logical value indicating whether to navigate to the submission
+#'   on exercism.io on completion
+#'
+#' @return Response from exercism.io
+#' 
+#' @examples 
+#' submit("~/exercism/r/hello-world/hello-world.R")
+#' @export
+submit <- function(path, comment = NULL, browse = FALSE) {
+  
+  data <- iteration(path, comment = comment)
+  
+  path <- "/api/v1/user/assignments"
+  
+  url <- httr::modify_url(root, path = path)
+  
+  resp <- httr::POST(url = url, ua,
+                     body = data,
+                     encode = 'json')
+  return(resp)
+  # should check response here and return a success/failure message
+  check_api_response(resp)
+  
+  message(sprintf("%s for %s track has been sucessfully submitted", data$problem, data$language))
+  
+  if (browse) {
+    browseURL(httr::content(resp)$url)
+  }
+
+  invisible(resp)
+  
+}
+
+
+#' Navigate to an exercise solution on exercism.io
+#'
+#' @inheritParams fetch_problem
+#'
+#' @export
+#'
+#' @examples
+#' browse_solution("r", "hamming")
+browse_solution <- function(track_id = "r", slug) {
+  
+  url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
+  
+  browseURL(url)
+}
+
+
+#' Navigate to an exercise description on exercism.io
+#'
+#' @inheritParams fetch_problem
+#'
+#' @export
+#'
+#' @examples
+#' browse_exercise("r", "leap")
+browse_exercise <- function(track_id = "r", slug) {
+  
+  url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
+  
+  browseURL(url)
 }

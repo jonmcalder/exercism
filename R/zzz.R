@@ -17,7 +17,7 @@ get_existing_config <- function() {
   }
 
   if (file.exists(config_path)) {
-    message("Found existing exercism config")
+    packageStartupMessage("Found existing exercism config")
     jsonlite::fromJSON(config_path)
   } else {
     list(apiKey = "", dir = "") # nolint
@@ -47,12 +47,12 @@ get_existing_config <- function() {
     }
 
     if (!nzchar(key)) {
-      message("Exercism API key not set. Please log into exercism.io/account/key,
-              copy the key and run set_api_key().")
+      packageStartupMessage("Exercism API key not set. Please log into 
+        exercism.io/account/key, copy the key and run set_api_key().")
     }
     if (!nzchar(path)) {
-      message("Exercism path not set. Please run set_exercism_path(\"...\") with
-              a directory path.")
+      packageStartupMessage("Exercism path not set. Please run 
+        set_exercism_path(\"...\") with a directory path.")
     }
 
   }

@@ -14,7 +14,7 @@ EXERCISM_KEY environment variable}
 }
 \value{
 Silently returns the result of the set operation, which will either
-  be 'Updated' an existing key or 'Created' a new key.
+be 'Updated' an existing key or 'Created' a new key.
 }
 \description{
 Set an environment variable for the provided exercism.io API key, and store

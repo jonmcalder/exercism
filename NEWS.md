@@ -1,3 +1,23 @@
+# exercism 0.1.1.9000
+
+* Added `iteration()` and `submit()` to facilitate submit functionality
+
+* Added tests for `iteration()`
+
+* Updated RStudio addin to handle the submission of exercises, and improved 
+UI with helper text
+
+* Added `browse_exercise()` and `browse_solution()`, convenience functions for 
+navigating to problem descriptions or solutions on http://exercism.io
+
+* Documented new functions
+
+* Replaced messages in `.onLoad()` with `packageStartupMessage()`, and made them 
+more descriptive
+
+* Re-order slug and track_id parameters in `fetch_problem()` and `skip_problem()` 
+to facilitate omission of the track parameter with an unamed slug parameter
+
 # exercism 0.1.1
 
 * Updated README to clarify the required steps to set API key and exercism path
