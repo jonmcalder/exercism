@@ -1,5 +1,4 @@
-# Set user agent
-ua <- httr::user_agent("http://github.com/jonmcalder/exercism")
+user_agent <- httr::user_agent("http://github.com/jonmcalder/exercism")
 
 # Set root URL for exercism API
 root <- "http://exercism.io"

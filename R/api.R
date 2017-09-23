@@ -20,8 +20,8 @@ check_next_problem <- function(track_id = "r") {
     query = list(key = get_api_key())
   )
 
-  resp <- httr::GET(url, ua)
 
+  resp <- httr::GET(url, config = user_agent)
   check_api_response(resp)
 
   x <- httr::content(resp)$problems[[1]]
@@ -44,24 +44,24 @@ check_next_problem <- function(track_id = "r") {
 #' Fetches the files for a problem via the Exercism API and writes them into
 #' a new problem folder in the Exercism directory
 #'
-#' @param track_id a normalized, url-safe identifier for a language track.
-#'  e.g. r, python, javascript etc
 #' @param slug a normalized, url-safe identifier for a problem
 #'  e.g. "hello-world"
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
 #' @param force logical, indicating whether existing problem files should be
 #'  overwritten
 #'
 #' @return Prints confirmation message upon success
 #'
 #' @export
-fetch_problem <- function(track_id = "r", slug, force = FALSE) {
+fetch_problem <- function(slug, track_id = "r", force = FALSE) {
 
   path <- sprintf("tracks/%s/%s", track_id, slug)
   # Could also use "/v2/exercises/[track_id]/[slug]"
 
   url <- httr::modify_url(root_x, path = path)
 
-  resp <- httr::GET(url, ua)
+  resp <- httr::GET(url, user_agent)
 
   check_api_response(resp)
 
@@ -125,7 +125,7 @@ fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
     query = list(key = get_api_key())
   )
 
-  resp <- httr::GET(url, ua)
+  resp <- httr::GET(url, user_agent)
 
   check_api_response(resp)
 
@@ -148,21 +148,21 @@ fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
 #'
 #' Marks a problem as 'skipped' via the Exercism API
 #'
-#' @param track_id a normalized, url-safe identifier for a language track.
-#'  e.g. r, python, javascript etc
 #' @param slug a normalized, url-safe identifier for a problem
 #'  e.g. "hello-world"
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
 #'
 #' @return Prints confirmation message upon success
 #'
 #' @export
-skip_problem <- function(track_id = "r", slug) {
+skip_problem <- function(slug, track_id = "r") {
 
   path <- sprintf("api/v1/iterations/%s/%s/skip", track_id, slug)
 
   url <- httr::modify_url(root, path = path, query = list(key = get_api_key()))
 
-  resp <- httr::POST(url, ua)
+  resp <- httr::POST(url, user_agent)
 
   check_api_response(resp)
 
@@ -186,7 +186,7 @@ track_status <- function(track_id = "r") {
 
   url <- httr::modify_url(root, path = path, query = list(key = get_api_key()))
 
-  resp <- httr::GET(url, ua)
+  resp <- httr::GET(url, user_agent)
 
   check_api_response(resp)
 
