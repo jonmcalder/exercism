@@ -23,10 +23,12 @@ exercism_addin <- function() {
       ),
       shiny::conditionalPanel(
         condition = "input.action == 'submit'",
-        h5(strong("Filepath")),
+        shiny::h5(shiny::strong("Filepath")),
         shiny::verbatimTextOutput("active_file"),
-        actionButton("refresh_file", "Refresh", icon = icon("refresh")),
-        helpText("Open the file in the RStudio's source viewer & refresh before submitting.")
+        shiny::actionButton("refresh_file", "Refresh",
+                            icon = shiny::icon("refresh")),
+        shiny::helpText("Open the file in the RStudio's source viewer & refresh
+                        before submitting.")
       ),
       shiny::conditionalPanel(
         condition = "input.action != 'submit'",
@@ -37,7 +39,7 @@ exercism_addin <- function() {
       ),
       shiny::conditionalPanel(
         condition = "input.action != 'submit' && input.slug == ''",
-        helpText("Please enter the problem slug above.")
+        shiny::helpText("Please enter the problem slug above.")
       ),
       shiny::conditionalPanel(
         condition = "input.slug != '' || input.action == 'submit'",
@@ -62,16 +64,16 @@ exercism_addin <- function() {
       )
 
     })
-    
-    file_to_submit <- reactive({
+
+    file_to_submit <- shiny::reactive({
       input$refresh_file
       rstudioapi::getSourceEditorContext()$path
     })
-    
+
     output$active_file <- shiny::renderText({
       file_to_submit()
     })
-    
+
     shiny::observeEvent(input$done, {
       shiny::stopApp()
     })
