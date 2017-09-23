@@ -44,17 +44,17 @@ check_next_problem <- function(track_id = "r") {
 #' Fetches the files for a problem via the Exercism API and writes them into
 #' a new problem folder in the Exercism directory
 #'
-#' @param track_id a normalized, url-safe identifier for a language track.
-#'  e.g. r, python, javascript etc
 #' @param slug a normalized, url-safe identifier for a problem
 #'  e.g. "hello-world"
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
 #' @param force logical, indicating whether existing problem files should be
 #'  overwritten
 #'
 #' @return Prints confirmation message upon success
 #'
 #' @export
-fetch_problem <- function(track_id = "r", slug, force = FALSE) {
+fetch_problem <- function(slug, track_id = "r", force = FALSE) {
 
   path <- sprintf("tracks/%s/%s", track_id, slug)
   # Could also use "/v2/exercises/[track_id]/[slug]"
@@ -148,15 +148,15 @@ fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
 #'
 #' Marks a problem as 'skipped' via the Exercism API
 #'
-#' @param track_id a normalized, url-safe identifier for a language track.
-#'  e.g. r, python, javascript etc
 #' @param slug a normalized, url-safe identifier for a problem
 #'  e.g. "hello-world"
+#' @param track_id a normalized, url-safe identifier for a language track.
+#'  e.g. r, python, javascript etc
 #'
 #' @return Prints confirmation message upon success
 #'
 #' @export
-skip_problem <- function(track_id = "r", slug) {
+skip_problem <- function(slug, track_id = "r") {
 
   path <- sprintf("api/v1/iterations/%s/%s/skip", track_id, slug)
 
