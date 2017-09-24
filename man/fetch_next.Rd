@@ -23,3 +23,8 @@ Prints confirmation message upon success
 Checks for the next problem via the Exercism API, and writes the files into
 the folder in the Exercism directory
 }
+\examples{
+\dontrun{
+fetch_next("r")
+}
+}

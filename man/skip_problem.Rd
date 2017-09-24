@@ -19,3 +19,8 @@ Prints confirmation message upon success
 \description{
 Marks a problem as 'skipped' via the Exercism API
 }
+\examples{
+\dontrun{
+skip_problem("bob", track_id = "r")
+}
+}

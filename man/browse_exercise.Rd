@@ -17,5 +17,7 @@ e.g. "hello-world"}
 Navigate to an exercise description on exercism.io
 }
 \examples{
+\dontrun{
 browse_exercise("r", "leap")
+}
 }

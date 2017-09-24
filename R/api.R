@@ -9,6 +9,10 @@
 #'
 #' @return Prints out current/next problem, silently returns problem slug
 #'
+#' @examples
+#' \dontrun{
+#' check_next_problem("r")
+#' }
 #' @export
 check_next_problem <- function(track_id = "r") {
 
@@ -53,6 +57,10 @@ check_next_problem <- function(track_id = "r") {
 #'
 #' @return Prints confirmation message upon success
 #'
+#' @examples
+#' \dontrun{
+#' fetch_problem("hello-world", "r")
+#' }
 #' @export
 fetch_problem <- function(slug, track_id = "r", force = FALSE) {
 
@@ -109,6 +117,10 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE) {
 #'
 #' @return Prints confirmation message upon success
 #'
+#' @examples
+#' \dontrun{
+#' fetch_next("r")
+#' }
 #' @export
 fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
 
@@ -155,6 +167,10 @@ fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
 #'
 #' @return Prints confirmation message upon success
 #'
+#' @examples
+#' \dontrun{
+#' skip_problem("bob", track_id = "r")
+#' }
 #' @export
 skip_problem <- function(slug, track_id = "r") {
 
@@ -179,6 +195,10 @@ skip_problem <- function(slug, track_id = "r") {
 #'
 #' @return Current track status from exercism.io
 #'
+#' @examples
+#' \dontrun{
+#' track_status("r")
+#' }
 #' @export
 track_status <- function(track_id = "r") {
 
@@ -241,7 +261,9 @@ print.status <- function(x, ...) {
 #' @return Response from exercism.io
 #'
 #' @examples
+#' \dontrun{
 #' submit("~/exercism/r/hello-world/hello-world.R")
+#' }
 #' @export
 submit <- function(path, comment = NULL, browse = FALSE) {
 
@@ -274,10 +296,11 @@ submit <- function(path, comment = NULL, browse = FALSE) {
 #'
 #' @inheritParams fetch_problem
 #'
-#' @export
-#'
 #' @examples
+#' \dontrun{
 #' browse_solution("r", "hamming")
+#' }
+#' @export
 browse_solution <- function(track_id = "r", slug) {
 
   url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
@@ -290,10 +313,11 @@ browse_solution <- function(track_id = "r", slug) {
 #'
 #' @inheritParams fetch_problem
 #'
-#' @export
-#'
 #' @examples
+#' \dontrun{
 #' browse_exercise("r", "leap")
+#' }
+#' @export
 browse_exercise <- function(track_id = "r", slug) {
 
   url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)

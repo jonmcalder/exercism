@@ -17,5 +17,7 @@ e.g. "hello-world"}
 Navigate to an exercise solution on exercism.io
 }
 \examples{
+\dontrun{
 browse_solution("r", "hamming")
+}
 }

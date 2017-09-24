@@ -16,3 +16,8 @@ Current track status from exercism.io
 \description{
 Fetches current track status from exercism.io
 }
+\examples{
+\dontrun{
+track_status("r")
+}
+}

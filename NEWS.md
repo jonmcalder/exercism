@@ -10,7 +10,8 @@ UI with helper text
 * Added `browse_exercise()` and `browse_solution()`, convenience functions for 
 navigating to problem descriptions or solutions on http://exercism.io
 
-* Documented new functions
+* Documented new functions and added examples for all existing exported 
+functions
 
 * Replaced messages in `.onLoad()` with `packageStartupMessage()`, and made them 
 more descriptive

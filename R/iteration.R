@@ -1,14 +1,17 @@
 
 #' Create a problem iteration
 #'
-#' This is a helper function which is called by [submit()]. It shouldn't ever need to be called directly.
+#' This is a helper function which is called by [submit()]. It shouldn't ever
+#' need to be called directly.
 #'
 #' @inheritParams submit
 #'
 #' @return A (data) list containing the code and various problem metadata
 #'
 #' @examples
+#' \dontrun{
 #' iteration("~/exercism/r/hello-world/hello-world.R")
+#' }
 #' @noRd
 iteration <- function(filepath, comment = NULL) {
 

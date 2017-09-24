@@ -21,5 +21,7 @@ Response from exercism.io
 Submits the specified solution to exercism.io
 }
 \examples{
+\dontrun{
 submit("~/exercism/r/hello-world/hello-world.R")
+}
 }
