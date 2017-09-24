@@ -47,12 +47,12 @@ get_existing_config <- function() {
     }
 
     if (!nzchar(key)) {
-      packageStartupMessage("Exercism API key not set. Please log into 
-        exercism.io/account/key, copy the key and run set_api_key().")
+      packageStartupMessage("Exercism API key not set.
+Please log into exercism.io/account/key, copy the key and run set_api_key().")
     }
     if (!nzchar(path)) {
-      packageStartupMessage("Exercism path not set. Please run 
-        set_exercism_path(\"...\") with a directory path.")
+      packageStartupMessage("Exercism path not set.
+Please run set_exercism_path(\"...\") with a directory path.")
     }
 
   }

@@ -7,7 +7,7 @@ on.exit({
   lapply(file_list, unlink, recursive = TRUE, force = TRUE)
   lapply(dir_list, unlink, recursive = TRUE, force = TRUE)
   lapply(dirname(dir_list), unlink, recursive = TRUE, force = TRUE)
-  
+
   if (class(current_path) != "try-error") {
     set_exercism_path(current_path, force = TRUE)
   }
@@ -16,8 +16,11 @@ on.exit({
 set_exercism_path("~", force = TRUE)
 
 ex_path <- get_exercism_path()
-dir_list <- c(file.path(ex_path, "ruby/hello-world"), file.path(ex_path, "r/hello-world"))
-file_list <- c("~/hello-world.R", file.path(ex_path, "ruby/hello-world/hello-world.rb"), file.path(ex_path, "r/hello-world/leap.py"))
+dir_list <- c(file.path(ex_path, "ruby/hello-world"),
+              file.path(ex_path, "r/hello-world"))
+file_list <- c("~/hello-world.R",
+               file.path(ex_path, "ruby/hello-world/hello-world.rb"),
+               file.path(ex_path, "r/hello-world/leap.py"))
 
 # Create files for testing
 lapply(dir_list, dir.create, recursive = TRUE)

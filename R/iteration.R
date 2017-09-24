@@ -16,17 +16,17 @@ iteration <- function(filepath, comment = NULL) {
   # if not on exercism path then error
   # if language and extension do not match then error
   if (is.null(filepath)) {
-    path_to_solution = rstudioapi::getSourceEditorContext()$path
+    path_to_solution <- rstudioapi::getSourceEditorContext()$path
   }
-  else if(R.utils::isAbsolutePath(filepath)) {
-    path_to_solution = filepath
+  else if (R.utils::isAbsolutePath(filepath)) {
+    path_to_solution <- filepath
   }
   else {
-    path_to_solution = file.path(getwd(), filepath)
+    path_to_solution <- file.path(getwd(), filepath)
   }
 
   # supported file extensions
-  exts <- c(R = "r" , r = "r", py = "python", js = "javascript")
+  exts <- c(R = "r", r = "r", py = "python", js = "javascript")
 
   assertthat::assert_that(
     file.exists(path_to_solution),
@@ -37,11 +37,12 @@ iteration <- function(filepath, comment = NULL) {
     msg = "Filepath specifies a directory. Please specify a file."
   )
   assertthat::assert_that(
-    grepl(path.expand(exercism:::get_exercism_path()), path.expand(path_to_solution)),
+    grepl(path.expand(get_exercism_path()), path.expand(path_to_solution)),
     msg = "Filepath does not match the exercism path."
   )
 
-  language_problem <- tail(unlist(strsplit(dirname(path_to_solution), .Platform$file.sep)), 2)
+  language_problem <- tail(unlist(strsplit(dirname(path_to_solution),
+                                           .Platform$file.sep)), 2)
 
   assertthat::assert_that(
     language_problem[1] %in% exts,
@@ -49,10 +50,11 @@ iteration <- function(filepath, comment = NULL) {
   )
   assertthat::assert_that(
     exts[[tools::file_ext(path_to_solution)]] == language_problem[1],
-    msg = "File extension does not match the language identifier present on the filepath. Please check the filepath."
+    msg = "File extension does not match the language identifier present on the
+    filepath. Please check the filepath."
   )
 
-  code = paste(readLines(path_to_solution), collapse = "\n")
+  code <- paste(readLines(path_to_solution), collapse = "\n")
   solution_code <- list(code)
   names(solution_code) <- basename(path_to_solution)
 

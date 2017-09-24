@@ -253,12 +253,13 @@ submit <- function(path, comment = NULL, browse = FALSE) {
 
   resp <- httr::POST(url = url, user_agent,
                      body = data,
-                     encode = 'json')
+                     encode = "json")
 
   # should check response here and return a success/failure message
   check_api_response(resp)
 
-  message(sprintf("%s for %s track has been sucessfully submitted", data$problem, data$language))
+  message(sprintf("%s for %s track has been sucessfully submitted",
+                  data$problem, data$language))
 
   if (browse) {
     browseURL(httr::content(resp)$url)
