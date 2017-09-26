@@ -1,3 +1,4 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 exercism
 ========
@@ -8,11 +9,10 @@ This package is designed to make it easy for R users to work through the R track
 
 It is not a complete replacement for the [Exercism CLI](http://exercism.io/clients/cli), but instead provides easy access to the most commonly used CLI functionality:
 
--   [x] fetch problems
--   [x] skip problems
--   [ ] submit solutions
--   [ ] check status/progress
--   [ ] fetch previous submissions
+-   fetch problems
+-   skip problems
+-   submit solutions
+-   check status/progress
 
 Install
 -------
