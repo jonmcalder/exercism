@@ -50,11 +50,13 @@ check_next_problem <- function(track_id = "r") {
 #'  e.g. r, python, javascript etc
 #' @param force logical, indicating whether existing problem files should be
 #'  overwritten
+#' @param open logical, indicating whether to open the problem files immediately
+#'  after fetching
 #'
 #' @return Prints confirmation message upon success
 #'
 #' @export
-fetch_problem <- function(slug, track_id = "r", force = FALSE) {
+fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE) {
 
   path <- sprintf("tracks/%s/%s", track_id, slug)
   # Could also use "/v2/exercises/[track_id]/[slug]"
@@ -92,6 +94,12 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE) {
   }
 
   message(sprintf("%s fetched for %s track", slug, track_id))
+
+  if (open) {
+    open_exercise(slug = slug, track_id = track_id)
+  }
+
+  invisible(names(files))
 }
 
 
@@ -100,17 +108,15 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE) {
 #' Checks for the next problem via the Exercism API, and writes the files into
 #' the folder in the Exercism directory
 #'
-#' @param track_id a normalized, url-safe identifier for a language track.
-#'  e.g. r, python, javascript etc
+#' @inheritParams fetch_problem
 #' @param skip logical, indicating whether to skip the current (unsubmitted)
 #'  problem and fetch the next problem
-#' @param force logical, indicating whether existing problem files should be
-#'  overwritten
 #'
 #' @return Prints confirmation message upon success
 #'
 #' @export
-fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
+fetch_next <- function(track_id = "r", skip = FALSE,
+                       force = FALSE, open = TRUE) {
 
   if (skip) {
     skip_problem(track_id = track_id,
@@ -134,9 +140,10 @@ fetch_next <- function(track_id = "r", skip = FALSE, force = FALSE) {
   problem_dir <- file.path(get_exercism_path(), x$id)
 
   if (!dir.exists(problem_dir)) {
-    fetch_problem(track_id = x$track_id, slug = x$slug)
+    fetch_problem(track_id = x$track_id, slug = x$slug, open = open)
   } else if (force) {
-    fetch_problem(track_id = x$track_id, slug = x$slug, force = TRUE)
+    fetch_problem(track_id = x$track_id, slug = x$slug,
+                  force = TRUE, open = open)
   } else {
     warning(sprintf("Not submitted: %s (%s)", x$name, x$language),
             call. = FALSE)
