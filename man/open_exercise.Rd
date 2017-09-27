@@ -20,7 +20,7 @@ set to the directory of the exercise being opened}
 Open files for an exercism.io problem
 }
 \examples{
-dontrun{
+\dontrun{
 open_exercise("leap")
 }
 }

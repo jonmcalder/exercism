@@ -19,35 +19,40 @@ test_that("check_next_problem", {
 })
 
 test_that("fetch_next", {
-  expect_error(fetch_next(track_id = "unknown"))
-  expect_message(fetch_next(track_id = "haskell", force = TRUE))
-  expect_warning(fetch_next(track_id = "haskell", force = TRUE),
+  expect_error(fetch_next(track_id = "unknown", open = FALSE))
+  expect_message(fetch_next(track_id = "haskell", force = TRUE, open = FALSE))
+  expect_warning(fetch_next(track_id = "haskell", force = TRUE, open = FALSE),
                  "Problem folder already exists")
-  expect_warning(fetch_next(track_id = "haskell"), "Not submitted")
+  expect_warning(fetch_next(track_id = "haskell", open = FALSE),
+                 "Not submitted")
 })
 
 test_that("fetch_problem", {
 
   expect_error(fetch_problem(
     track_id = "unknown",
-    slug = "hello-world"
+    slug = "hello-world",
+    open = FALSE
   ))
 
   expect_message(fetch_problem(
     track_id = "haskell",
     slug = "anagram",
-    force = TRUE
+    force = TRUE,
+    open = FALSE
   ))
 
   expect_warning(fetch_problem(
     track_id = "haskell",
     slug = "anagram",
-    force = TRUE
+    force = TRUE,
+    open = FALSE
   ), "Problem folder already exists")
 
   expect_error(fetch_problem(
     track_id = "haskell",
-    slug = "hello-world"
+    slug = "hello-world",
+    open = FALSE
   ), "Problem folder already exists")
 
 })
