@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' dontrun{
+#' \dontrun{
 #' open_exercise("leap")
 #' }
 open_exercise <- function(slug, track_id = "r", change_wd = FALSE) {
