@@ -5,10 +5,10 @@ current_path <- try(get_exercism_path(), TRUE)
 
 on.exit({
   if (class(current_key) != "try-error") {
-    set_api_key(current_key)
+    set_api_key(current_key, force = TRUE)
   }
   if (class(current_path) != "try-error") {
-    set_exercism_path(current_path)
+    set_exercism_path(current_path, force = TRUE)
   }
 })
 

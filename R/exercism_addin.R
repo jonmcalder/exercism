@@ -8,35 +8,42 @@ exercism_addin <- function() {
   ui <- miniUI::miniPage(
     miniUI::gadgetTitleBar("exercism.io"),
     miniUI::miniContentPanel(
-      shiny::inputPanel(
-        shiny::selectInput(
-          "action", label = "Action",
-          choices = c("fetch", "skip", "submit"),
-          selected = "fetch"
-        ),
+      shiny::selectInput(
+        "action", label = "Action",
+        choices = c("fetch", "skip", "submit"),
+        selected = "fetch"
+      ),
+      shiny::conditionalPanel(
+        condition = "input.action != 'submit'",
         shiny::selectInput(
           "track", label = "Language Track",
-          choices = c("r", "python", "javascript", "bash", "c", "cpp"),
+          choices = c("r", "python", "javascript"),
           selected = "r"
-        ),
-        shiny::conditionalPanel(
-          condition = "input.action == 'submit'",
-          shiny::textInput(
-            "solution", label = "Path to Solution",
-            placeholder = "C:/Users/Bob/exercism/r/hello-world.R"
-          )
-        ),
-        shiny::conditionalPanel(
-          condition = "input.action != 'submit'",
-          shiny::textInput(
-            "slug", label = "Problem Slug",
-            placeholder = "hello-world"
-          )
-        ),
-        shiny::conditionalPanel(
-          condition = "input.slug != '' || input.solution != ''",
-          shiny::uiOutput("action_button")
         )
+      ),
+      shiny::conditionalPanel(
+        condition = "input.action == 'submit'",
+        shiny::h5(shiny::strong("Filepath")),
+        shiny::verbatimTextOutput("active_file"),
+        shiny::actionButton("refresh_file", "Refresh",
+                            icon = shiny::icon("refresh")),
+        shiny::helpText("Open the file in the RStudio's source viewer & refresh
+                        before submitting.")
+      ),
+      shiny::conditionalPanel(
+        condition = "input.action != 'submit'",
+        shiny::textInput(
+          "slug", label = "Problem Slug",
+          placeholder = "hello-world"
+        )
+      ),
+      shiny::conditionalPanel(
+        condition = "input.action != 'submit' && input.slug == ''",
+        shiny::helpText("Please enter the problem slug above.")
+      ),
+      shiny::conditionalPanel(
+        condition = "input.slug != '' || input.action == 'submit'",
+        shiny::uiOutput("action_button")
       )
     )
   )
@@ -46,22 +53,29 @@ exercism_addin <- function() {
     output$action_button <- shiny::renderUI({
 
       shiny::actionButton("apply_action",
-                          label = switch(input$action,
-                                    "fetch"  = "Fetch exercise",
-                                    "skip"   = "Skip exercise",
-                                    "submit" = "Submit exercise"),
-                          icon = switch(input$action,
-                                        "fetch"  = shiny::icon("download"),
-                                        "skip"   = shiny::icon("fast-forward"),
-                                        "submit" = shiny::icon("upload"))
+        label = switch(input$action,
+                  "fetch"  = "Fetch exercise",
+                  "skip"   = "Skip exercise",
+                  "submit" = "Submit exercise"),
+        icon = switch(input$action,
+                  "fetch"  = shiny::icon("download"),
+                  "skip"   = shiny::icon("fast-forward"),
+                  "submit" = shiny::icon("upload"))
       )
 
     })
 
+    file_to_submit <- shiny::reactive({
+      input$refresh_file
+      rstudioapi::getSourceEditorContext()$path
+    })
+
+    output$active_file <- shiny::renderText({
+      file_to_submit()
+    })
+
     shiny::observeEvent(input$done, {
-
       shiny::stopApp()
-
     })
 
     shiny::observeEvent(input$apply_action, {
@@ -88,10 +102,16 @@ exercism_addin <- function() {
           message(w$message)
         }),
 
-        "submit" = message("Sorry, submit functionality is not available yet.")
-
+        "submit" = tryCatch({
+          submit(file_to_submit())
+        },
+        error = function(e) {
+          message(e$message)
+        },
+        warning = function(w) {
+          message(w$message)
+        })
       )
-
     })
 
   }

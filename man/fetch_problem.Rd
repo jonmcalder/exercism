@@ -26,3 +26,8 @@ Prints confirmation message upon success
 Fetches the files for a problem via the Exercism API and writes them into
 a new problem folder in the Exercism directory
 }
+\examples{
+\dontrun{
+fetch_problem("hello-world", "r")
+}
+}

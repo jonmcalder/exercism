@@ -17,3 +17,8 @@ Prints out current/next problem, silently returns problem slug
 Returns the next problem for a language track i.e. the next problem to be
 submitted, or possibly the next problem to be fetched
 }
+\examples{
+\dontrun{
+check_next_problem("r")
+}
+}

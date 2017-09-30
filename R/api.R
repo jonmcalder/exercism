@@ -9,6 +9,10 @@
 #'
 #' @return Prints out current/next problem, silently returns problem slug
 #'
+#' @examples
+#' \dontrun{
+#' check_next_problem("r")
+#' }
 #' @export
 check_next_problem <- function(track_id = "r") {
 
@@ -55,6 +59,10 @@ check_next_problem <- function(track_id = "r") {
 #'
 #' @return Prints confirmation message upon success
 #'
+#' @examples
+#' \dontrun{
+#' fetch_problem("hello-world", "r")
+#' }
 #' @export
 fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE) {
 
@@ -114,6 +122,10 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE) {
 #'
 #' @return Prints confirmation message upon success
 #'
+#' @examples
+#' \dontrun{
+#' fetch_next("r")
+#' }
 #' @export
 fetch_next <- function(track_id = "r", skip = FALSE,
                        force = FALSE, open = TRUE) {
@@ -162,6 +174,10 @@ fetch_next <- function(track_id = "r", skip = FALSE,
 #'
 #' @return Prints confirmation message upon success
 #'
+#' @examples
+#' \dontrun{
+#' skip_problem("bob", track_id = "r")
+#' }
 #' @export
 skip_problem <- function(slug, track_id = "r") {
 
@@ -173,7 +189,7 @@ skip_problem <- function(slug, track_id = "r") {
 
   check_api_response(resp)
 
-  message(sprintf(sprintf("%s skipped for %s track", slug, track_id)))
+  message(sprintf("%s skipped for %s track", slug, track_id))
 
 }
 
@@ -186,6 +202,10 @@ skip_problem <- function(slug, track_id = "r") {
 #'
 #' @return Current track status from exercism.io
 #'
+#' @examples
+#' \dontrun{
+#' track_status("r")
+#' }
 #' @export
 track_status <- function(track_id = "r") {
 
@@ -232,5 +252,82 @@ create_status <- function(x) {
 #'
 #' @export
 print.status <- function(x, ...) {
-  str(x)
+  utils::str(x)
+}
+
+
+#' Submit a solution to exercism.io
+#'
+#' Submits the specified solution to exercism.io
+#'
+#' @param path full path to the file containing the solution
+#' @param comment comment to include with the submission
+#' @param browse logical value indicating whether to navigate to the submission
+#'   on exercism.io on completion
+#'
+#' @return Response from exercism.io
+#'
+#' @examples
+#' \dontrun{
+#' submit("~/exercism/r/hello-world/hello-world.R")
+#' }
+#' @export
+submit <- function(path, comment = NULL, browse = FALSE) {
+
+  data <- iteration(path, comment = comment)
+
+  path <- "/api/v1/user/assignments"
+
+  url <- httr::modify_url(root, path = path)
+
+  resp <- httr::POST(url = url, user_agent,
+                     body = data,
+                     encode = "json")
+
+  # should check response here and return a success/failure message
+  check_api_response(resp)
+
+  message(sprintf("%s for %s track has been sucessfully submitted",
+                  data$problem, data$language))
+
+  if (browse) {
+    browseURL(httr::content(resp)$url)
+  }
+
+  invisible(resp)
+
+}
+
+
+#' Navigate to an exercise solution on exercism.io
+#'
+#' @inheritParams fetch_problem
+#'
+#' @examples
+#' \dontrun{
+#' browse_solution("r", "hamming")
+#' }
+#' @export
+browse_solution <- function(track_id = "r", slug) {
+
+  url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
+
+  browseURL(url)
+}
+
+
+#' Navigate to an exercise description on exercism.io
+#'
+#' @inheritParams fetch_problem
+#'
+#' @examples
+#' \dontrun{
+#' browse_exercise("r", "leap")
+#' }
+#' @export
+browse_exercise <- function(track_id = "r", slug) {
+
+  url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
+
+  browseURL(url)
 }

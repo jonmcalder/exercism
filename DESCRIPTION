@@ -1,7 +1,7 @@
 Package: exercism
 Type: Package
 Title: Interface to the Exercism API
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: person("Jon", "Calder", email = "jonmcalder@gmail.com", role = c("aut", "cre"))
 Description: Exercism provides practice problems in over 30 programming 
     languages, and a place where you can get feedback on your solutions. This 
@@ -16,7 +16,10 @@ Imports:
     httr,
     jsonlite,
     shiny,
-    miniUI
+    miniUI,
+    R.utils,
+    assertthat,
+    rstudioapi
 Suggests:
     testthat,
     covr,
@@ -24,3 +27,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1.9000
+Roxygen: list(markdown = TRUE)

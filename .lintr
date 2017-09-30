@@ -1,3 +1,4 @@
 linters: with_defaults(
     absolute_paths_linter = NULL
+    object_usage_linter = NULL
   )
