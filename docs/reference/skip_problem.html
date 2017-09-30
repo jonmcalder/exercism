@@ -90,20 +90,20 @@
     <p>Marks a problem as 'skipped' via the Exercism API</p>
     
 
-    <pre class="usage"><span class='fu'>skip_problem</span>(<span class='kw'>track_id</span> <span class='kw'>=</span> <span class='st'>"r"</span>, <span class='no'>slug</span>)</pre>
+    <pre class="usage"><span class='fu'>skip_problem</span>(<span class='no'>slug</span>, <span class='kw'>track_id</span> <span class='kw'>=</span> <span class='st'>"r"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>track_id</th>
-      <td><p>a normalized, url-safe identifier for a language track.
-e.g. r, python, javascript etc</p></td>
-    </tr>
-    <tr>
       <th>slug</th>
       <td><p>a normalized, url-safe identifier for a problem
 e.g. "hello-world"</p></td>
+    </tr>
+    <tr>
+      <th>track_id</th>
+      <td><p>a normalized, url-safe identifier for a language track.
+e.g. r, python, javascript etc</p></td>
     </tr>
     </table>
     
@@ -112,6 +112,10 @@ e.g. "hello-world"</p></td>
     <p>Prints confirmation message upon success</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>skip_problem</span>(<span class='st'>"bob"</span>, <span class='kw'>track_id</span> <span class='kw'>=</span> <span class='st'>"r"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -119,7 +123,9 @@ e.g. "hello-world"</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

@@ -117,13 +117,34 @@ library(exercism)</code></pre>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>Get the next problem for the R track:</p>
+<p>Note that all track-specific functions will default to the R track if the <code>track_id</code> argument is not specified.</p>
+<div id="fetch-problems" class="section level4">
+<h4 class="hasAnchor">
+<a href="#fetch-problems" class="anchor"></a>Fetch problems</h4>
+<p>Get the next problem:</p>
 <pre><code><a href="reference/fetch_next.html">fetch_next()</a></code></pre>
-<p>Get a specific problem for the R track (e.g. “leap”):</p>
-<pre><code><a href="reference/fetch_problem.html">fetch_problem(slug = "leap")</a></code></pre>
-<p>Skip a specific problem for the R track (e.g. “bob”):</p>
-<pre><code><a href="reference/skip_problem.html">skip_problem(slug = "bob")</a></code></pre>
-<p>(note that you may specify a different language track via the <code>track_id</code> argument)</p>
+<p>Get a specific problem:</p>
+<pre><code>fetch_problem(slug = "leap")
+fetch_problem(slug = "bob", track_id = "python")</code></pre>
+</div>
+<div id="skip-problems" class="section level4">
+<h4 class="hasAnchor">
+<a href="#skip-problems" class="anchor"></a>Skip problems</h4>
+<pre><code>skip_problem(slug = "bob")
+skip_problem(slug = "hello-world", track_id = "python")</code></pre>
+</div>
+<div id="submit-problems" class="section level4">
+<h4 class="hasAnchor">
+<a href="#submit-problems" class="anchor"></a>Submit problems</h4>
+<pre><code>submit("C:/Users/Jon/exercism/r/leap/leap.R")
+submit("C:/Users/Jon/exercism/python/anagram/anagram.py")</code></pre>
+</div>
+<div id="check-status" class="section level4">
+<h4 class="hasAnchor">
+<a href="#check-status" class="anchor"></a>Check status</h4>
+<pre><code>track_status()
+track_status(track_id = "python")</code></pre>
+</div>
 </div>
 <div id="rstudio-addin" class="section level2">
 <h2 class="hasAnchor">
@@ -153,6 +174,7 @@ library(exercism)</code></pre>
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Jon Calder <br><small class="roles"> Author, maintainer </small> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">

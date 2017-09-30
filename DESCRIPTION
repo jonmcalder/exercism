@@ -2,7 +2,9 @@ Package: exercism
 Type: Package
 Title: Interface to the Exercism API
 Version: 0.1.1.9000
-Authors@R: person("Jon", "Calder", email = "jonmcalder@gmail.com", role = c("aut", "cre"))
+Authors@R: c(
+    person("Jon", "Calder", email = "jonmcalder@gmail.com", role = c("aut", "cre")),
+    person("Katrin", "Leinweber", role = "ctb"))
 Description: Exercism provides practice problems in over 30 programming 
     languages, and a place where you can get feedback on your solutions. This 
     package makes it easy to fetch problems and submit solutions, so that you 

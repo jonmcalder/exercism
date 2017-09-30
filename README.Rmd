@@ -78,25 +78,43 @@ Once you've set your API key and exercism path these will be remembered for futu
 
 ## Usage
 
-Get the next problem for the R track:
+Note that all track-specific functions will default to the R track if the `track_id` argument is not specified.
+
+#### Fetch problems
+
+Get the next problem:
 
 ```
 fetch_next()
 ```
 
-Get a specific problem for the R track (e.g. "leap"):
+Get a specific problem:
 
 ```
 fetch_problem(slug = "leap")
+fetch_problem(slug = "bob", track_id = "python")
 ```
 
-Skip a specific problem for the R track (e.g. "bob"):
+#### Skip problems
 
 ```
 skip_problem(slug = "bob")
+skip_problem(slug = "hello-world", track_id = "python")
 ```
 
-(note that you may specify a different language track via the `track_id` argument)
+#### Submit problems
+
+```
+submit("C:/Users/Jon/exercism/r/leap/leap.R")
+submit("C:/Users/Jon/exercism/python/anagram/anagram.py")
+```
+
+#### Check status
+
+```
+track_status()
+track_status(track_id = "python")
+```
 
 ## RStudio Addin
 
