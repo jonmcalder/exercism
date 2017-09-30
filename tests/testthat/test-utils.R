@@ -33,10 +33,3 @@ test_that("check API response method", {
   expect_warning(check_api_response(httr::GET("http://httpbin.org/xml")))
   expect_error(check_api_response(httr::GET("http://httpbin.org/wrong")))
 })
-
-if (requireNamespace("lintr", quietly = TRUE)) {
-  context("Lints")
-  test_that("Package Style", {
-    lintr::expect_lint_free()
-  })
-}

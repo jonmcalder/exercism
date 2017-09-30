@@ -4,7 +4,7 @@
 \alias{fetch_problem}
 \title{Fetch a problem for a particular language track}
 \usage{
-fetch_problem(slug, track_id = "r", force = FALSE)
+fetch_problem(slug, track_id = "r", force = FALSE, open = TRUE)
 }
 \arguments{
 \item{slug}{a normalized, url-safe identifier for a problem
@@ -15,6 +15,9 @@ e.g. r, python, javascript etc}
 
 \item{force}{logical, indicating whether existing problem files should be
 overwritten}
+
+\item{open}{logical, indicating whether to open the problem files immediately
+after fetching}
 }
 \value{
 Prints confirmation message upon success

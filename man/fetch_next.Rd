@@ -4,7 +4,7 @@
 \alias{fetch_next}
 \title{Fetch the next problem for a particular language track}
 \usage{
-fetch_next(track_id = "r", skip = FALSE, force = FALSE)
+fetch_next(track_id = "r", skip = FALSE, force = FALSE, open = TRUE)
 }
 \arguments{
 \item{track_id}{a normalized, url-safe identifier for a language track.
@@ -15,6 +15,9 @@ problem and fetch the next problem}
 
 \item{force}{logical, indicating whether existing problem files should be
 overwritten}
+
+\item{open}{logical, indicating whether to open the problem files immediately
+after fetching}
 }
 \value{
 Prints confirmation message upon success
