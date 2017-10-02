@@ -44,7 +44,7 @@ iteration <- function(filepath, comment = NULL) {
     msg = "Filepath does not match the exercism path."
   )
 
-  language_problem <- tail(unlist(strsplit(dirname(path_to_solution),
+  language_problem <- utils::tail(unlist(strsplit(dirname(path_to_solution),
                                            .Platform$file.sep)), 2)
 
   assertthat::assert_that(

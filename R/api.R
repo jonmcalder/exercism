@@ -291,7 +291,7 @@ submit <- function(path, comment = NULL, browse = FALSE) {
                   data$problem, data$language))
 
   if (browse) {
-    browseURL(httr::content(resp)$url)
+    utils::browseURL(httr::content(resp)$url)
   }
 
   invisible(resp)
@@ -312,7 +312,7 @@ browse_solution <- function(track_id = "r", slug) {
 
   url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
 
-  browseURL(url)
+  utils::browseURL(url)
 }
 
 
@@ -329,5 +329,5 @@ browse_exercise <- function(track_id = "r", slug) {
 
   url <- sprintf("http://exercism.io/exercises/%s/%s/readme", track_id, slug)
 
-  browseURL(url)
+  utils::browseURL(url)
 }
