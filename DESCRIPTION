@@ -21,9 +21,9 @@ Imports:
     miniUI,
     R.utils,
     assertthat,
-    rstudioapi
+    rstudioapi,
+    testthat
 Suggests:
-    testthat,
     covr,
     lintr
 Encoding: UTF-8
