@@ -110,6 +110,10 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE,
     open_exercise(slug = slug, track_id = track_id)
   }
 
+  if (run_tests) {
+    run_tests(slug = slug, track_id = track_id)
+  }
+
   invisible(names(files))
 }
 
@@ -165,6 +169,10 @@ fetch_next <- function(track_id = "r", skip = FALSE,
   } else {
     warning(sprintf("Not submitted: %s (%s)", x$name, x$language),
             call. = FALSE)
+  }
+  
+  if (run_tests) {
+    run_tests(slug = slug, track_id = track_id)
   }
 
 }
