@@ -22,6 +22,6 @@ run_tests <- function(slug, track_id = "r") {
   if (!dir.exists(problem_dir)) {
     stop(sprintf("Problem folder /%s/%s/ not found.", track_id, slug))
   } else {
-    testthat::auto_test(problem_dir, problem_dir, hash = FALSE)
-  }
+    testthat::auto_test(problem_dir, problem_dir)
+  }  # hash = FALSE would be possible once github.com/hadley/testthat/pull/598 is released to CRAN
 }
