@@ -17,7 +17,7 @@ open_exercise <- function(slug, track_id = "r", change_wd = FALSE) {
 
   files <- list.files(path_to_exercise, full.names = TRUE)
 
-  lapply(files, file.edit)
+  lapply(files, utils::file.edit)
 
   if (change_wd) {
     setwd(path_to_exercise)
