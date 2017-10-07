@@ -2,11 +2,7 @@
 #' 
 #' Wrapper for [testthat::auto_test()] that starts running the problem's test cases.
 #'
-#' @param slug a normalized, url-safe identifier for a problem
-#'  e.g. "hello-world"
-#'
-#' @param track_id a normalized, url-safe identifier for a language track.
-#'  e.g. r, python, javascript etc
+#' @inheritParams fetch_problem
 #'
 #' @return Prints test reports
 #' @export
