@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_tests.R
 \name{run_tests}
 \alias{run_tests}
-\title{Run tests}
+\title{Run tests against your solution automatically}
 \usage{
 run_tests(slug, track_id = "r")
 }
@@ -17,7 +17,8 @@ e.g. r, python, javascript etc}
 Prints test reports
 }
 \description{
-Wrapper for \code{\link[testthat:auto_test]{testthat::auto_test()}} that starts running the problem's test cases.
+Exercism-specific wrapper for \code{\link[testthat:auto_test]{testthat::auto_test()}} that starts running the
+problem's test cases against your solution. Thus, you can improve it iteratively, in a "\href{http://exercism.io/how-it-works/newbie}{test-driven}" manner.
 }
 \examples{
 \dontrun{
