@@ -56,7 +56,7 @@ check_next_problem <- function(track_id = "r") {
 #'  overwritten
 #' @param open logical, indicating whether to open the problem files immediately
 #'  after fetching
-#' @param run_tests logical, indicating whether to run `testthat::auto_test()`
+#' @param autotest logical, indicating whether to run `testthat::auto_test()`
 #'  on the fetched problem's directory
 #'
 #' @return Prints confirmation message upon success
@@ -67,7 +67,7 @@ check_next_problem <- function(track_id = "r") {
 #' }
 #' @export
 fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE,
-                          run_tests = FALSE) {
+                          autotest = FALSE) {
 
   path <- sprintf("tracks/%s/%s", track_id, slug)
   # Could also use "/v2/exercises/[track_id]/[slug]"
@@ -110,8 +110,8 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE,
     open_exercise(slug = slug, track_id = track_id)
   }
 
-  if (run_tests) {
-    run_tests(slug = slug, track_id = track_id)
+  if (autotest) {
+    autotest(slug = slug, track_id = track_id)
   }
 
   invisible(names(files))
@@ -136,7 +136,7 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE,
 #' @export
 fetch_next <- function(track_id = "r", skip = FALSE,
                        force = FALSE, open = TRUE,
-                       run_tests = FALSE) {
+                       autotest = FALSE) {
 
   slug <- check_next_problem(track_id = track_id)
   
@@ -171,8 +171,8 @@ fetch_next <- function(track_id = "r", skip = FALSE,
             call. = FALSE)
   }
   
-  if (run_tests) {
-    run_tests(slug = slug, track_id = track_id)
+  if (autotest) {
+    autotest(slug = slug, track_id = track_id)
   }
 
 }

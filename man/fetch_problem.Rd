@@ -5,7 +5,7 @@
 \title{Fetch a problem for a particular language track}
 \usage{
 fetch_problem(slug, track_id = "r", force = FALSE, open = TRUE,
-  run_tests = FALSE)
+  autotest = FALSE)
 }
 \arguments{
 \item{slug}{a normalized, url-safe identifier for a problem
@@ -20,7 +20,7 @@ overwritten}
 \item{open}{logical, indicating whether to open the problem files immediately
 after fetching}
 
-\item{run_tests}{logical, indicating whether to run \code{testthat::auto_test()}
+\item{autotest}{logical, indicating whether to run \code{testthat::auto_test()}
 on the fetched problem's directory}
 }
 \value{

@@ -10,9 +10,9 @@
 #'
 #' @examples
 #' \dontrun{
-#'   run_tests("hello-world")
+#'   autotest("hello-world")
 #' }
-run_tests <- function(slug, track_id = "r") {
+autotest <- function(slug, track_id = "r") {
 
   problem_dir <- file.path(get_exercism_path(), track_id, slug)
   
