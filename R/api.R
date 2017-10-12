@@ -138,11 +138,10 @@ fetch_next <- function(track_id = "r", skip = FALSE,
                        force = FALSE, open = TRUE,
                        start_testing = FALSE) {
 
-  slug <- check_next_problem(track_id = track_id)
-  
   if (skip) {
+    next_slug <- check_next_problem(track_id = track_id)
     skip_problem(track_id = track_id,
-                 slug = slug)
+                 slug = next_slug)
   }
 
   path <- sprintf("v2/exercises/%s", track_id)
