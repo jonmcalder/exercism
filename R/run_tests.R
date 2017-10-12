@@ -1,7 +1,8 @@
-#' Run tests against your solution automatically
+#' Start testing your solution
 #' 
-#' Exercism-specific wrapper for [testthat::auto_test()] that starts running the
-#' problem's test cases against your solution. Thus, you can improve it iteratively, in a "[test-driven](http://exercism.io/how-it-works/newbie)" manner.
+#' Exercism-specific wrapper for [testthat::auto_test()] that starts testing
+#' your solution against the problem's test cases. Thus, you can improve it 
+#' iteratively, in a "[test-driven](http://exercism.io/how-it-works/newbie)" manner.
 #'
 #' @inheritParams fetch_problem
 #'
