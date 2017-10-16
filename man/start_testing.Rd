@@ -9,9 +9,6 @@ start_testing(slug)
 \arguments{
 \item{slug}{a normalized, url-safe identifier for a problem
 e.g. "hello-world"}
-
-\item{track_id}{a normalized, url-safe identifier for a language track.
-e.g. r, python, javascript etc}
 }
 \value{
 Prints test reports

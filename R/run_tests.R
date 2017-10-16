@@ -22,5 +22,7 @@ start_testing <- function(slug) {
     stop(sprintf("Problem folder /r/%s/ not found.", slug))
   } else {
     testthat::auto_test(problem_dir, problem_dir)
-  }  # hash = FALSE would be possible once github.com/hadley/testthat/pull/598 is released to CRAN
+    # hash = FALSE would be possible once github.com/hadley/testthat/pull/598 
+    # is released to CRAN
+  }
 }
