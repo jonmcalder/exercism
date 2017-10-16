@@ -110,8 +110,8 @@ fetch_problem <- function(slug, track_id = "r", force = FALSE, open = TRUE,
     open_exercise(slug = slug, track_id = track_id)
   }
 
-  if (start_testing) {
-    start_testing(slug = slug, track_id = track_id)
+  if (start_testing && track_id == "r") {
+    start_testing(slug = slug)
   }
 
   invisible(names(files))
