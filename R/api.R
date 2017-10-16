@@ -170,8 +170,8 @@ fetch_next <- function(track_id = "r", skip = FALSE,
             call. = FALSE)
   }
   
-  if (start_testing) {
-    start_testing(slug = x$slug, track_id = track_id)
+  if (start_testing && track_id == "r") {
+    start_testing(slug = x$slug)
   }
 
 }
