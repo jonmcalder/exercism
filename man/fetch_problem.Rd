@@ -4,7 +4,8 @@
 \alias{fetch_problem}
 \title{Fetch a problem for a particular language track}
 \usage{
-fetch_problem(slug, track_id = "r", force = FALSE, open = TRUE)
+fetch_problem(slug, track_id = "r", force = FALSE, open = TRUE,
+  start_testing = FALSE)
 }
 \arguments{
 \item{slug}{a normalized, url-safe identifier for a problem
@@ -18,6 +19,9 @@ overwritten}
 
 \item{open}{logical, indicating whether to open the problem files immediately
 after fetching}
+
+\item{start_testing}{logical, indicating whether to run \code{testthat::auto_test()}
+on the fetched problem's directory}
 }
 \value{
 Prints confirmation message upon success

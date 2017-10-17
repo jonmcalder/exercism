@@ -4,7 +4,8 @@
 \alias{fetch_next}
 \title{Fetch the next problem for a particular language track}
 \usage{
-fetch_next(track_id = "r", skip = FALSE, force = FALSE, open = TRUE)
+fetch_next(track_id = "r", skip = FALSE, force = FALSE, open = TRUE,
+  start_testing = FALSE)
 }
 \arguments{
 \item{track_id}{a normalized, url-safe identifier for a language track.
@@ -18,6 +19,9 @@ overwritten}
 
 \item{open}{logical, indicating whether to open the problem files immediately
 after fetching}
+
+\item{start_testing}{logical, indicating whether to run \code{testthat::auto_test()}
+on the fetched problem's directory}
 }
 \value{
 Prints confirmation message upon success
